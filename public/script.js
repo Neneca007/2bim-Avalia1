@@ -3,7 +3,7 @@
 // O desenho e a assinatura sao gerados no servidor.
 
 // Client ID do OAuth (Web application) criado no Google Cloud Console. E publico.
-const CLIENT_ID = "SEU_CLIENT_ID.apps.googleusercontent.com";
+const CLIENT_ID = "1071673110238-5de0bnvmbmnvavulgpnajm0p5t6cd78v.apps.googleusercontent.com";
 
 const formulario = document.getElementById("formulario");
 const campoNumero = document.getElementById("numero");
