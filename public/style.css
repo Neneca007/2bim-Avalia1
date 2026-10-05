@@ -1,11 +1,31 @@
+/* Cores baseadas no tema do Open SaaS (opensaas.sh) */
 :root {
-  --fundo: #0d1117;
-  --superficie: #161b22;
-  --borda: #30363d;
-  --texto: #e6edf3;
-  --texto-suave: #8b949e;
-  --destaque: #58a6ff;
-  --erro: #ff7b72;
+  --fundo: hsl(0 0% 100%);
+  --superficie: hsl(31 57% 96%);
+  --borda: hsl(0 0% 89.8%);
+  --texto: hsl(0 0% 3.9%);
+  --texto-suave: hsl(0 0% 45.1%);
+  --primaria: hsl(210 100% 13%);
+  --primaria-texto: hsl(0 0% 98%);
+  --destaque: hsl(32 100% 37%);
+  --acento: hsl(33 74% 62%);
+  --erro: hsl(0 84.2% 60.2%);
+  --raio: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: hsl(210 50% 5%);
+    --superficie: hsl(233 24% 15%);
+    --borda: hsl(0 0% 14.9%);
+    --texto: hsl(0 0% 98%);
+    --texto-suave: hsl(0 0% 63.9%);
+    --primaria: hsl(31 57% 93%);
+    --primaria-texto: hsl(210 100% 13%);
+    --destaque: hsl(209 91% 61%);
+    --acento: hsl(31 57% 93%);
+    --erro: hsl(0 62.8% 63%);
+  }
 }
 
 * {
@@ -15,27 +35,56 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--fundo);
+  background:
+    radial-gradient(60rem 30rem at 50% -10%, color-mix(in srgb, var(--acento) 25%, transparent), transparent),
+    var(--fundo);
   color: var(--texto);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
 }
 
 main {
   max-width: 720px;
   margin: 0 auto;
-  padding: 48px 16px;
+  padding: 64px 16px;
+}
+
+header {
+  text-align: center;
 }
 
 h1 {
   margin: 0 0 8px;
-  font-family: Georgia, serif;
-  font-weight: normal;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--destaque), var(--acento));
 }
 
 header p {
   margin: 0 0 32px;
+  color: var(--texto-suave);
+}
+
+#login {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+#usuario {
+  min-height: 1.5em;
+  margin: 0 0 16px;
+  text-align: center;
   color: var(--texto-suave);
 }
 
@@ -46,14 +95,16 @@ form {
   grid-auto-flow: column;
   gap: 6px 12px;
   align-items: end;
-  padding: 20px;
+  padding: 24px;
   background: var(--superficie);
   border: 1px solid var(--borda);
-  border-radius: 10px;
+  border-radius: calc(var(--raio) * 2);
+  box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.15);
 }
 
 label {
   font-size: 0.85rem;
+  font-weight: 600;
   color: var(--texto-suave);
 }
 
@@ -64,7 +115,7 @@ input {
   color: var(--texto);
   background: var(--fundo);
   border: 1px solid var(--borda);
-  border-radius: 6px;
+  border-radius: var(--raio);
 }
 
 input:focus {
@@ -73,14 +124,15 @@ input:focus {
 }
 
 button {
-  padding: 10px 20px;
+  padding: 10px 22px;
   font: inherit;
   font-weight: 600;
-  color: var(--fundo);
-  background: var(--destaque);
+  color: var(--primaria-texto);
+  background: var(--primaria);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--raio);
   cursor: pointer;
+  transition: opacity 0.15s;
 }
 
 form button {
@@ -88,22 +140,13 @@ form button {
 }
 
 button:hover {
-  filter: brightness(1.1);
-}
-
-#login {
-  margin-bottom: 8px;
-}
-
-#usuario {
-  min-height: 1.5em;
-  margin: 0 0 16px;
-  color: var(--texto-suave);
+  opacity: 0.9;
 }
 
 #mensagem {
   min-height: 1.5em;
   margin: 12px 0;
+  text-align: center;
   color: var(--erro);
 }
 
@@ -116,14 +159,19 @@ figure svg {
   width: 100%;
   height: auto;
   border: 1px solid var(--borda);
-  border-radius: 10px;
+  border-radius: calc(var(--raio) * 2);
 }
 
 #baixar {
-  margin-top: 16px;
+  display: block;
+  margin: 16px auto 0;
   color: var(--texto);
   background: transparent;
   border: 1px solid var(--borda);
+}
+
+#baixar[hidden] {
+  display: none;
 }
 
 @media (max-width: 560px) {
