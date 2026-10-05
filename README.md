@@ -31,4 +31,4 @@ Framework preset: `None`. Build command: vazio. Build output directory: `public`
 
 Nome: Emanuell ernesto costa maciel
 RA: 2026109125
-URL: https://SEU-SITE.pages.dev
+URL: https://2bim-avalia1-4ui.pages.dev
